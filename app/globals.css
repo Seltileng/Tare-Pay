@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%; /* #F8FAFC */
+    --foreground: 222 47% 11%; /* #0F172A */
+
+    --card: 0 0% 100%; /* #FFFFFF */
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 222 47% 11%; /* Deep Navy #0F172A */
+    --primary-foreground: 210 40% 98%;
+
+    --accent: 161 94% 30%; /* Emerald #059669 */
+    --accent-foreground: 0 0% 100%;
+
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 161 94% 30%;
+
+    --radius-xl: 0.75rem;
+    --radius-2xl: 1rem;
+    --radius-3xl: 1.5rem;
+  }
+
+  .dark {
+    --background: 222 47% 7%; /* Navy tint #0B1220 */
+    --foreground: 210 40% 98%;
+
+    --card: 222 45% 12%; /* Navy tint #111B2E */
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 45% 12%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222 47% 11%;
+
+    --accent: 160 84% 39%; /* Bright emerald for dark mode */
+    --accent-foreground: 222 47% 7%;
+
+    --muted: 223 38% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    --border: 222 36% 22%;
+    --input: 222 36% 22%;
+    --ring: 160 84% 39%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-accent/20 selection:text-accent;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply tracking-tight font-semibold;
+  }
+}
+
+/* Tabular numerals for monetary and quantitative values */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle 1px inner highlight border */
+.card-highlight {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.08), 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.light .card-highlight {
+  box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.9), 0 1px 2px rgba(15, 23, 42, 0.04), 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+/* Glassmorphism */
+.glass-header {
+  @apply backdrop-blur-md bg-white/75 dark:bg-[#0B1220]/80 border-b border-border/80 sticky top-0 z-30 transition-colors;
+}
+
+.glass-floating {
+  @apply backdrop-blur-md bg-white/85 dark:bg-[#111B2E]/85 border border-white/20 dark:border-white/10 shadow-card;
+}
+
+/* Mesh Gradient for Hero Cards */
+.mesh-gradient-navy {
+  background-color: #0F172A;
+  background-image: 
+    radial-gradient(at 10% 20%, rgba(5, 150, 105, 0.35) 0px, transparent 55%),
+    radial-gradient(at 90% 80%, rgba(14, 165, 233, 0.25) 0px, transparent 50%),
+    radial-gradient(at 50% 50%, rgba(30, 41, 59, 0.9) 0px, transparent 100%);
+}
+
+.grid-pattern {
+  background-size: 24px 24px;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Skip link for accessibility */
+.skip-to-content {
+  @apply sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent focus:text-white focus:rounded-xl focus:shadow-lg focus:outline-none focus:ring-2 focus:ring-ring;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
